@@ -39,12 +39,13 @@ def mostrarTablero(tablero, secuencia):
     else:
         print("La secuencia se sale del tablero proporcionado")
 
-def contenidocolumna(nrocol, tablero):
+def contenidocolumna(numeroColumna, tablero):
     columna = []
     for row in tablero:
-        celda = row[nrocol - 1]
+        celda = row[numeroColumna - 1]
         columna.append(celda)
     return columna
+
 
 secuencia = [1, 2, 3, 4, 1, 2, 3, 4]
 tablero = tableroVacio()
