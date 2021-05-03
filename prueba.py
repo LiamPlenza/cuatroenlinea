@@ -39,7 +39,7 @@ def mostrarTablero(tablero, secuencia):
     else:
         print("La secuencia se sale del tablero proporcionado")
 
-def contenidocolumna(numeroColumna, tablero):
+def contenidoColumna(numeroColumna, tablero):
     columna = []
     for row in tablero:
         celda = row[numeroColumna - 1]
@@ -51,4 +51,4 @@ secuencia = [1, 2, 3, 4, 1, 2, 3, 4]
 tablero = tableroVacio()
 tirarFichas(tablero, secuencia)
 mostrarTablero(tablero, secuencia)
-print(contenidocolumna(2, tablero))
+print(contenidoColumna(2, tablero))
