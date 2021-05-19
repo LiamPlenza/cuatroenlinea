@@ -39,23 +39,27 @@ def mostrarTablero(tablero, secuencia):
     else:
         print("La secuencia se sale del tablero proporcionado")
 
-def contenidoColumna(numeroColumna, tablero):
-    columna = []
-    for row in tablero:
-        celda = row[numeroColumna - 1]
-        columna.append(celda)
-    return columna
-
 def contenidoFila(fila, tablero):
-    mostrarCF = []
+    mostrarCC = []
     cf = 6 - int(fila)
     for a in range(0, 7, +1):
         celda = tablero[cf][a]
         mostrarCF.append(celda)
     return mostrarCF
 
-def filaVAlida (fila):
+def filaValida (fila):
     if 0 > fila > 7:
+        return True
+    else:
+        return False
+def contenidoCol(columna, tablero):
+    mostrarCC = []
+    for a in range(5, -1, -1):
+        celda = tablero[a][int(columna) - 1]
+        mostrarCC.append(celda)
+    return mostrarCC
+def columnaValida (columna):
+    if 0 > columna > 8:
         return True
     else:
         return False
@@ -64,13 +68,19 @@ secuencia = [1, 2, 3, 4, 1, 2, 3, 4]
 tablero = tableroVacio()
 tirarFichas(tablero, secuencia)
 mostrarTablero(tablero, secuencia)
-print(contenidoColumna(5, tablero))
 
 fila = 6
 
-if filaVAlida:
+columna = 5
+
+if filaValida:
     mostrarCF = contenidoFila(fila, tablero)
     print(mostrarCF)
 else:
     print ("La fila indicada no corresponde a una perteneciente al talero")
 
+if columnaValida:
+    mostrarCC = contenidoFila(fila, tablero)
+    print(mostrarCC)
+else:
+    print ("La columna indicada no corresponde a una perteneciente al talero")
