@@ -54,7 +54,7 @@ def contenidoFila(fila, tablero):
         mostrarCF.append(celda)
     return mostrarCF
 
-def filaValida (fila):
+def filaVAlida (fila):
     if 0 > fila > 7:
         return True
     else:
@@ -68,7 +68,7 @@ print(contenidoColumna(5, tablero))
 
 fila = 6
 
-if filaValida:
+if filaVAlida:
     mostrarCF = contenidoFila(fila, tablero)
     print(mostrarCF)
 else:
