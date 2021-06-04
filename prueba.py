@@ -10,8 +10,8 @@ def tableroVacio ():
 def tirarFichas (tablero, secuencia):
     todoOk = columnaCorrecta(secuencia)
     if todoOk:
-     for row in range(5, 0, -1):
-         for c in range(len(secuencia)):
+        for row in range(5, 0, -1):
+            for c in range(len(secuencia)):
                 if c % 2 == 0:
                     if tablero[row][secuencia[c] - 1] == 0:
                         tablero[row][secuencia[c] - 1] = 1
@@ -31,16 +31,19 @@ def columnaCorrecta(secuencia):
         return True
     else:
         return False
-def mostrarTablero(tablero, secuencia):
-    todoOk = columnaCorrecta(secuencia)
-    if todoOk:
-        for row in tablero:
-            print(row)
-    else:
-        print("La secuencia se sale del tablero proporcionado")
+def mostrarTablero(tablero):
+    for row in range(0,6):
+	    print(" | "  , end='')
+	    for cell in range(0,7):
+		    if tablero[row][cell] == 0:
+			    print('   ',end='')
+		    else:
+			    print(f' {tablero[row][cell]} ',end='')
+	    print(' | ')
+    print(" +- - - - - - - - - - - -+")
 
 def contenidoFila(fila, tablero):
-    mostrarCC = []
+    mostrarCF = []
     cf = 6 - int(fila)
     for a in range(0, 7, +1):
         celda = tablero[cf][a]
@@ -67,17 +70,21 @@ def columnaValida (columna):
 secuencia = [1, 2, 3, 4, 1, 2, 3, 4]
 tablero = tableroVacio()
 tirarFichas(tablero, secuencia)
-mostrarTablero(tablero, secuencia)
+
+if columnaCorrecta:
+    mostrarTablero(tablero)
+else:
+    print("Una de las fichas tiradas no fue arrojada en una columna valida (1 a 7)")
 
 fila = 6
-
-columna = 5
 
 if filaValida:
     mostrarCF = contenidoFila(fila, tablero)
     print(mostrarCF)
 else:
     print ("La fila indicada no corresponde a una perteneciente al talero")
+
+columna = 5
 
 if columnaValida:
     mostrarCC = contenidoFila(fila, tablero)
