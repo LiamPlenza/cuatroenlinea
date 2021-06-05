@@ -72,7 +72,7 @@ tablero = tableroVacio()
 tirarFichas(tablero, secuencia)
 
 if columnaCorrecta:
-    mostrarTablero(tablero) #tablero agregado
+    mostrarTablero(tablero) #tablero agregado.
 else:
     print("Una de las fichas tiradas no fue arrojada en una columna valida (1 a 7)")
 
