@@ -7,30 +7,20 @@ def tableroVacio ():
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
     ]
-def tirarFichas (tablero, secuencia):
-    todoOk = columnaCorrecta(secuencia)
-    if todoOk:
-        for row in range(5, 0, -1):
-            for c in range(len(secuencia)):
-                if c % 2 == 0:
-                    if tablero[row][secuencia[c] - 1] == 0:
-                        tablero[row][secuencia[c] - 1] = 1
-                else:
-                    if tablero[row][secuencia[c] - 1] == 0:
-                     tablero[row][secuencia[c] - 1] = 2
-    return
-def columnaCorrecta(secuencia):
-    a = 0
-    b = 0
-    for c in range(len(secuencia)):
-        if 8 > secuencia[c] > 0:
-            a += 1
-        else:
-            b += 1
-    if len(secuencia) == (a - b):
-        return True
-    else:
-        return False
+def tirarFichas (ficha, columna, tablero):
+    for row in range(6, 0, -1):
+	    if tablero[row - 1][columna - 1] == 0:
+		    tablero[row -1][columna - 1] = ficha
+	    return
+def completarTableroEnOrden(secuencia, tablero):
+	c = 0
+	for column in secuencia:
+		if c % 2 != 0:
+			tirarFichas(2, column, tablero)
+		else:
+			tirarFichas(1, column, tablero)
+		c += 1
+	return tablero
 def mostrarTablero(tablero):
     for row in range(0,6):
 	    print(" | "  , end='')
@@ -61,21 +51,24 @@ def contenidoCol(columna, tablero):
         celda = tablero[a][int(columna) - 1]
         mostrarCC.append(celda)
     return mostrarCC
-def columnaValida (columna):
-    if 0 > columna > 8:
-        return True
-    else:
-        return False
+def columnaValida (secuencia):
+    for columna in secuencia:
+	    if columna < 1 or columna > 7:
+		    return False
+    return True
 
-secuencia = [1, 2, 3, 4, 1, 2, 3, 4]
+secuencia_texto = input("Ingrese la secuencia de numeros")
+secuencia = []
+for items in secuencia_texto.split(','):
+    secuencia.append(int(items))
+
+
 tablero = tableroVacio()
-tirarFichas(tablero, secuencia)
-
-if columnaCorrecta:
-    mostrarTablero(tablero)
+if columnaValida(secuencia):
+	tablero = completarTableroEnOrden(secuencia, tablero)
+	mostrarTablero(tablero)
 else:
-    print("Una de las fichas tiradas no fue arrojada en una columna valida (1 a 7)")
-
+	print("Para que la secuencia sea valida los valores tienen que estar comprendidos entre el 1 y el 7")
 fila = 6
 
 if filaValida:
@@ -86,7 +79,13 @@ else:
 
 columna = 5
 
-if columnaValida:
+def columna_Valida (secuencia):
+    if 0 > columna > 8:
+        return True
+    else:
+        print ("La columna ingresada debe encontrarse entre 1 y 7")
+
+if columna_Valida:
     mostrarCC = contenidoFila(fila, tablero)
     print(mostrarCC)
 else:
