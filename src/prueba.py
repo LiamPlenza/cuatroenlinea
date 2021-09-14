@@ -1,3 +1,4 @@
+  
 def tableroVacio ():
         return[
         [0, 0, 0, 0, 0, 0, 0],
@@ -57,10 +58,10 @@ def columnaValida (secuencia):
 		    return False
     return True
 
-secuencia_texto = input("Ingrese la secuencia de numeros")
+#secuencia_texto = input("Ingrese la secuencia de numeros")
 secuencia = []
-for items in secuencia_texto.split(','):
-    secuencia.append(int(items))
+#for items in secuencia_texto.split(','):
+ #   secuencia.append(int(items))
 
 
 tablero = tableroVacio()
